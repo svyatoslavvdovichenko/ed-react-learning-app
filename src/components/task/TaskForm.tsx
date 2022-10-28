@@ -60,13 +60,13 @@ export const TaskForm: FC<TaskFormProps> = ({
               placeholder="Введите название"
               $marginBottom={19}
             />
-            {console.log('values', values)}
 
             <Row gutter={[8, 0]}>
               <Col span={12}>
                 <SelectField
                   $marginBottom={19}
                   label="Направление"
+                  placeholder="Выберите направление"
                   name="specialization"
                   options={SPECIALIZATION_LIST}
                   shouldUpdate={{ shouldUpdate: () => true }}
@@ -77,6 +77,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                 <MultipleSelectField
                   $marginBottom={19}
                   label="Технологии"
+                  placeholder="Выберите технологии"
                   name="technologies"
                   options={technologies ?? []}
                   shouldUpdate={{ shouldUpdate: () => true }}
@@ -98,6 +99,9 @@ export const TaskForm: FC<TaskFormProps> = ({
                   <Row gutter={[8, 0]} style={{ marginBottom: 19 }}>
                     <Col span={18}>
                       <Input
+                        type="url"
+                        pattern="https://.*"
+                        placeholder="https://example.com"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                       />
