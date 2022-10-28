@@ -152,6 +152,16 @@ export const TaskForm: FC<TaskFormProps> = ({
 
             <Row justify="end">
               <Button
+                type="primary"
+                ghost
+                onClick={() => navigate.push('/dashboard')}
+                style={{ height: 40, marginRight: 20 }}
+              >
+                <LeftOutlined />
+                Назад
+              </Button>
+              
+              <Button
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
