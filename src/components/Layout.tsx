@@ -90,7 +90,7 @@ export const Layout: FC<LayoutPropsType> = ({
         {children}
       </StyledContent>
 
-      <Footer style={{ backgroundColor: '#F0F0F0' }}>Exceed Challenger  2022</Footer>
+      <Footer style={{ backgroundColor: '#F0F0F0' }}>Exceed Challenger 2022</Footer>
     </AntdLayout>
   )
 }
