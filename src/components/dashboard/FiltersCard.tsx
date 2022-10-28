@@ -35,7 +35,7 @@ export const FiltersCard: FC = () => {
       <Row justify="start" gutter={[0, 10]}>
         <Formik
           initialValues={{
-            specialization: '',
+            specialization: "",
             technologies: [],
           }}
           onSubmit={(values) => {

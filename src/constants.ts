@@ -6,19 +6,19 @@ export const EMPTY_OPTION = {
 export const SPECIALIZATION_LIST = [
   EMPTY_OPTION,
   {
-    id: 'frontend',
+    id: 1,
     title: 'Frontend',
   },
   {
-    id: 'backend',
+    id: 2,
     title: 'Backend',
   },
   {
-    id: 'fullstack',
+    id: 3,
     title: 'Fullstack',
   },
   {
-    id: 'refactoring',
+    id: 4,
     title: 'Refactoring',
   },
 ]
