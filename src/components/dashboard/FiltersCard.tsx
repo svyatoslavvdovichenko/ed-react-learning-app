@@ -8,7 +8,6 @@ import { generateUrl } from '../../services/generateUrl'
 import { useApi } from '../../hooks/useApi'
 import { useQueryClient } from 'react-query'
 import { useReferences } from '../../hooks/useReferences'
-import { SPECIALIZATION_LIST } from '../../constants'
 
 const StyledButton = styled(Button)`
   height: 40px;
@@ -21,7 +20,7 @@ const StyledCard = styled(Card)`
 `
 
 export const FiltersCard: FC = () => {
-  const { technologies } = useReferences()
+  const { technologies, specializations } = useReferences()
 
   const queryClient = useQueryClient()
   const api = useApi()
@@ -49,7 +48,7 @@ export const FiltersCard: FC = () => {
               <SelectField
                 $marginBottom={10}
                 name="specialization"
-                options={SPECIALIZATION_LIST ?? []}
+                options={specializations ?? []}
                 label={<StyledText>Направление</StyledText>}
               />
 
