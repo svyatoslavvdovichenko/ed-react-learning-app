@@ -57,7 +57,7 @@ export const Layout: FC<LayoutPropsType> = ({
         >
           <Link to="/">
             <Title level={3} style={{ marginBottom: 0 }}>
-              Exceed Challenger
+              Exceed Challenger 2022
             </Title>
           </Link>
 
@@ -90,7 +90,7 @@ export const Layout: FC<LayoutPropsType> = ({
         {children}
       </StyledContent>
 
-      <Footer style={{ backgroundColor: '#F0F0F0' }}>Exceed Challenger</Footer>
+      <Footer style={{ backgroundColor: '#F0F0F0' }}>Exceed Challenger 2022</Footer>
     </AntdLayout>
   )
 }
