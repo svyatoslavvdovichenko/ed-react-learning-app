@@ -26,7 +26,7 @@ const StyledContent = styled(Content)<{ $shouldBeCentered: boolean }>`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: '#FAFAFA';
+      background-color: '#f4f4f7';
     `}
 `
 
