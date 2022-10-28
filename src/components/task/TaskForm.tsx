@@ -37,11 +37,9 @@ export const TaskForm: FC<TaskFormProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
 
-  const { technologies } = useReferences()
+  const { technologies, specializations } = useReferences()
 
-  const navigate = useHistory()
-
-  console.log('initialValues!!!', initialValues)
+  const navigate = useHistory();
 
   return (
     <Card
@@ -109,8 +107,8 @@ export const TaskForm: FC<TaskFormProps> = ({
                       <Button
                         onClick={() => {
                           if (inputValue) {
-                            arrayHelpers.push(inputValue)
-                            setInputValue('')
+                            arrayHelpers.push(inputValue);
+                            setInputValue('');
                           }
                         }}
                         icon={<LinkOutlined />}
@@ -153,6 +151,9 @@ export const TaskForm: FC<TaskFormProps> = ({
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
+                onClick={() => {
+                  handleSubmit(values);
+                }}
               >
                 {isEdit && <SaveOutlined />}
                 {submitButtonText}
