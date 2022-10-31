@@ -22,6 +22,13 @@ const CloseIcon = styled(CloseOutlined)`
   }
 `
 
+const StyledButton = styled(Button)`
+  button {
+    height: 40px; 
+    marginRight: 20px;
+  }
+`
+
 export interface TaskFormProps {
   initialValues: any
   handleSubmit: (values: any) => void
@@ -151,27 +158,25 @@ export const TaskForm: FC<TaskFormProps> = ({
             />
 
             <Row justify="end">
-              <Button
+              <StyledButton
                 type="primary"
                 ghost
                 onClick={() => navigate.push('/dashboard')}
-                style={{ height: 40, marginRight: 20 }}
+                icon={<LeftOutlined />}
               >
-                <LeftOutlined />
                 Назад
-              </Button>
+              </StyledButton>
               
-              <Button
-                style={{ height: 40 }}
+              <StyledButton
                 type="primary"
                 disabled={!isValid || !dirty}
                 onClick={() => {
                   handleSubmit(values);
                 }}
+                icon={isEdit && <SaveOutlined />}
               >
-                {isEdit && <SaveOutlined />}
                 {submitButtonText}
-              </Button>
+              </StyledButton>
             </Row>
           </Form>
         )}
