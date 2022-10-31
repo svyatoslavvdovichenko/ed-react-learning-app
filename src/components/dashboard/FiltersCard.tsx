@@ -7,7 +7,7 @@ import { SelectField } from '../forms/SelectField'
 import { generateUrl } from '../../services/generateUrl'
 import { useApi } from '../../hooks/useApi'
 import { useQueryClient } from 'react-query'
-import { useReferences } from '../../hooks/useReferences'
+import { useTypedSelector } from '../../hooks/useTypeSelector'
 
 const StyledButton = styled(Button)`
   height: 40px;
@@ -20,7 +20,7 @@ const StyledCard = styled(Card)`
 `
 
 export const FiltersCard: FC = () => {
-  const { technologies, specializations } = useReferences()
+  const { technologies, specializations } = useTypedSelector(state => state.referenceReducer);
 
   const queryClient = useQueryClient()
   const api = useApi()

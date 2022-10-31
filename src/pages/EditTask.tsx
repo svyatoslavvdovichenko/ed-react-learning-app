@@ -6,7 +6,8 @@ import { TaskForm } from '../components/task/TaskForm'
 import { ERROR_NOTIFIFCATION_MESSAGE } from '../constants'
 import { useApi } from '../hooks/useApi'
 import { useQueryRequest } from '../hooks/useQueryRequest'
-import { useReferences } from '../hooks/useReferences'
+import { useTypedSelector } from '../hooks/useTypeSelector'
+
 import { ITask } from '../types'
 import {
   convertSpecializationOptions,
@@ -26,7 +27,7 @@ export const EditTask = () => {
     `v1/tasks/${taskId}/`,
   )
 
-  const { technologies, specializations } = useReferences()
+  const { technologies, specializations } = useTypedSelector(state => state.referenceReducer);
 
   const handleUpdateTask = (values: any) => {
     api

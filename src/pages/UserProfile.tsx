@@ -10,8 +10,6 @@ import { TaskItem } from '../components/dashboard/TaskItem'
 export const UserProfile: FC = () => {
   const { user } = useUser()
 
-  console.log('user', user)
-
   return (
     <Layout>
       <Row justify="center">

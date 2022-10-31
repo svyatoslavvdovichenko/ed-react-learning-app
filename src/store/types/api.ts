@@ -1,2 +1,5 @@
-const a = 5;
-export { a }
+import { AxiosInstance } from "axios"
+
+export interface apiState {
+  apiInstance: AxiosInstance
+}

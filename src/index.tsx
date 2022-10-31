@@ -9,6 +9,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import 'antd/dist/antd.css'
 import './index.css'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 const queryClient = new QueryClient()
 
@@ -17,11 +19,13 @@ ReactDOM.render(
     <Router>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <ApiProvider>
-            <AuthProvider>
-              <AuthorizationApp />
-            </AuthProvider>
-          </ApiProvider>
+          <Provider store={store}>
+            <ApiProvider>
+              <AuthProvider>
+                <AuthorizationApp />
+              </AuthProvider>
+            </ApiProvider>
+          </Provider>
         </BrowserRouter>
       </QueryClientProvider>
     </Router>

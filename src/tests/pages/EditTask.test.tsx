@@ -1,4 +1,3 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import { EditTask } from '../../pages/EditTask'
 
@@ -39,23 +38,6 @@ jest.mock('../../hooks/useQueryRequest', () => ({
       ],
       title: 'Название тестового задания',
     },
-  }),
-}))
-
-jest.mock('../../hooks/useReferences', () => ({
-  useReferences: () => ({
-    technologies: [
-      {
-        id: 123,
-        title: 'adaptive',
-      },
-    ],
-    specialization: [
-      {
-        id: 1,
-        title: 'frontend',
-      },
-    ],
   }),
 }))
 

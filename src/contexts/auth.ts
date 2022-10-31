@@ -4,7 +4,6 @@ import { createContext } from 'react'
 export interface AuthContextType {
   isAuthenticated: boolean
   user?: IUser
-  onLogout: () => void
   onLogin: (data: any) => void
 }
 

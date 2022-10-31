@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Row, Col, Button } from 'antd'
 import { FiltersCard } from '../components/dashboard/FiltersCard'
 import { TasksCard } from '../components/dashboard/TasksCard'
@@ -7,9 +7,21 @@ import { Layout } from '../components/Layout'
 
 import { AdminRequired } from '../hocs/AdminRequired'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useQueryRequest } from '../hooks/useQueryRequest'
+import { ISpecialization, ITechnology } from '../types'
+import { useActions } from '../hooks/useActions'
 
 export const Dashboard: FC = () => {
   const navigate = useHistory()
+  const { setReferences } = useActions()
+
+  const { data: dataTech } = useQueryRequest<ITechnology[]>('v1/technologies/')
+  const { data: dataSpec } = useQueryRequest<ISpecialization[]>(
+    'v1/specializations/',
+  )
+
+  setReferences({ technologies: dataTech!, specializations: dataSpec! })
 
   return (
     <Layout>
