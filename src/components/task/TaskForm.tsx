@@ -1,4 +1,4 @@
-import { LeftOutlined, LinkOutlined, SaveOutlined } from '@ant-design/icons'
+import { LinkOutlined, SaveOutlined } from '@ant-design/icons'
 import { Button, Card, Col, Input, Row, Tag } from 'antd'
 import { FieldArray, Form, Formik } from 'formik'
 import { FC, useState } from 'react'
@@ -52,15 +52,14 @@ export const TaskForm: FC<TaskFormProps> = ({
         onSubmit={(values) => handleSubmit(values)}
         validationSchema={TaskSchema}
       >
-        {({ isValid, values, dirty, setValues }) => (
-          <Form>
+        {({ isValid, values, dirty, setValues, submitForm }) => (
+          <Form onSubmit={() => console.log(values)}>
             <InputField
               label="Название задания"
               name="title"
               placeholder="Введите название"
               $marginBottom={19}
             />
-            {console.log('values', values)}
 
             <Row gutter={[8, 0]}>
               <Col span={12}>
@@ -151,9 +150,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
-                onClick={() => {
-                  handleSubmit(values);
-                }}
+                onClick={submitForm}
               >
                 {isEdit && <SaveOutlined />}
                 {submitButtonText}
