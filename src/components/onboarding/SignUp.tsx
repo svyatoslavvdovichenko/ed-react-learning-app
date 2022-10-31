@@ -45,10 +45,10 @@ export const SignUp = () => {
     >
       {({ isValid }) => (
         <Form>
-          <div style={{display: "flex", gap: "5px"}}>
+          <Row style={{display: "flex", gap: "5px"}}>
             <InputField name="firstName" placeholder="Введите Имя" />
             <InputField name="lastName" placeholder="Введите Фамилию" />
-          </div>
+          </Row>
           
           <InputField name="email" placeholder="Введите Email" />
           
