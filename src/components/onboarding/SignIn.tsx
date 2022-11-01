@@ -4,23 +4,15 @@ import { Formik, Form } from 'formik'
 import { SingInSchema } from '../../forms/validators'
 import { InputField } from '../forms/InputField'
 import { StyledButton } from '../common/StyledComponents'
-import { useActions } from '../../hooks/useActions'
 import { useApi } from '../../hooks/useApi'
 import { useEffect, useState } from 'react'
-import { setAuthHeader } from '../../hocs/ApiProvider'
 import { sendErrorNotification } from '../../utils/systemNotification'
-import { Loader } from '../common/Loader'
+import { useActions } from '../../hooks/useActions'
 
 export const SignIn = () => {
-  const [state, setState] = useState({ isLoading: true })
-
-  const navigate = useHistory()
-
+  const navigate = useHistory();
+  
   const api = useApi()
-
-  useEffect(() => {
-    setAuthHeader(api, localStorage.authToken)
-  }, [])
 
   const onLogin = (values: any) => {
     api

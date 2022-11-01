@@ -1,3 +1,4 @@
+import { setAuthHeader } from './apiActions'
 import { loginUser, onLogout, setUser } from './authActions'
 import { fetchReferences, setReferences } from './referenceActions'
 
@@ -7,4 +8,5 @@ export default {
   onLogout,
   loginUser,
   setUser,
+  setAuthHeader
 }

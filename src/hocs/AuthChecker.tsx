@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import { Loader } from '../components/common/Loader'
 import { useActions } from '../hooks/useActions'
 import { useApi } from '../hooks/useApi'
-import { setAuthHeader } from './ApiProvider'
 
 export type AuthCheckerState = {
   isLoading: boolean
@@ -14,7 +13,7 @@ export const AuthChecker: FC = ({ children }) => {
 
   const navigate = useHistory()
 
-  const { setUser } = useActions()
+  const { setUser, setAuthHeader } = useActions()
 
   const api = useApi()
 
@@ -33,8 +32,8 @@ export const AuthChecker: FC = ({ children }) => {
       })
 
   useEffect(() => {
-    setAuthHeader(api, localStorage.authToken)
-
+    setAuthHeader({ token: localStorage.authToken })
+    
     getUserProfile()
   }, [])
 
