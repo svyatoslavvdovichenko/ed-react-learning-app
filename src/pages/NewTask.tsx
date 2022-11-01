@@ -18,7 +18,9 @@ export const NewTask = () => {
   const api = useApi()
   const navigate = useHistory()
 
-  const { technologies, specializations } = useTypedSelector(state => state.referenceReducer);
+  const { technologies, specializations } = useTypedSelector(
+    (state) => state.referenceReducer,
+  )
 
   const handleCreateTask = (values: any) => {
     api

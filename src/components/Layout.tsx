@@ -12,7 +12,6 @@ import styled, { css } from 'styled-components'
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useUser } from '../hooks/useUser'
-import { useActions } from '../hooks/useActions'
 
 const { Title } = Typography
 
@@ -87,7 +86,7 @@ export const Layout: FC<LayoutPropsType> = ({
             >
               <Button>
                 <UserOutlined />
-                
+
                 {user.first_name}
               </Button>
             </Dropdown>

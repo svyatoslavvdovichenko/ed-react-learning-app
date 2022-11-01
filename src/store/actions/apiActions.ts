@@ -1,2 +1,2 @@
-const a = 5;
+const a = 5
 export { a }

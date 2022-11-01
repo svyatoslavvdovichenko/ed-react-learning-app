@@ -37,7 +37,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
 
-  const { technologies } = useTypedSelector(state => state.referenceReducer)
+  const { technologies } = useTypedSelector((state) => state.referenceReducer)
 
   const navigate = useHistory()
 
@@ -62,7 +62,7 @@ export const TaskForm: FC<TaskFormProps> = ({
               placeholder="Введите название"
               $marginBottom={19}
             />
-            
+
             <Row gutter={[8, 0]}>
               <Col span={12}>
                 <SelectField

@@ -20,7 +20,9 @@ const StyledCard = styled(Card)`
 `
 
 export const FiltersCard: FC = () => {
-  const { technologies, specializations } = useTypedSelector(state => state.referenceReducer);
+  const { technologies, specializations } = useTypedSelector(
+    (state) => state.referenceReducer,
+  )
 
   const queryClient = useQueryClient()
   const api = useApi()
@@ -34,7 +36,7 @@ export const FiltersCard: FC = () => {
       <Row justify="start" gutter={[0, 10]}>
         <Formik
           initialValues={{
-            specialization: "",
+            specialization: '',
             technologies: [],
           }}
           onSubmit={(values) => {

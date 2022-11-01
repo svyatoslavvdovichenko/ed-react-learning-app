@@ -8,7 +8,7 @@ const initialState: ReferencesState = {
   technologies: [],
   specializations: [],
   isLoadingTech: false,
-  isLoadingSpec: false
+  isLoadingSpec: false,
 }
 
 export const referenceReducer = (
@@ -18,7 +18,7 @@ export const referenceReducer = (
   switch (action.type) {
     case ReferencesActionTypes.FETCH_REFERENCES:
       return { ...state, isLoadingTech: true, isLoadingSpec: true }
-      
+
     case ReferencesActionTypes.FETCH_REFERENCES_SUCCESS:
       return {
         ...state,

@@ -2,19 +2,19 @@ import { IUser } from '../../types'
 import { AuthActionTypes } from '../types/auth'
 
 export const loginUser = (payload: any) => {
-  return ({
+  return {
     type: AuthActionTypes.USER_LOGIN,
     payload,
-  })
+  }
 }
 
 export const setUser = (payload: { user: IUser }) => {
   //localStorage.setItem('authToken', );
 
-  return ({
+  return {
     type: AuthActionTypes.SET_USER,
-    payload
-  })
+    payload,
+  }
 }
 
 export const onLogout = () => {

@@ -27,7 +27,9 @@ export const EditTask = () => {
     `v1/tasks/${taskId}/`,
   )
 
-  const { technologies, specializations } = useTypedSelector(state => state.referenceReducer);
+  const { technologies, specializations } = useTypedSelector(
+    (state) => state.referenceReducer,
+  )
 
   const handleUpdateTask = (values: any) => {
     api

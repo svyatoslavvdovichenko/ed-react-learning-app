@@ -1,4 +1,4 @@
-import { AuthState, AuthAction, AuthActionTypes } from "../types/auth"
+import { AuthState, AuthAction, AuthActionTypes } from '../types/auth'
 
 const initialState: AuthState = {
   isAuthenticated: false,
@@ -17,13 +17,13 @@ export const authReducer = (
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload.user
+        user: action.payload.user,
       }
-    case AuthActionTypes.LOGOUT_USER: 
+    case AuthActionTypes.LOGOUT_USER:
       return {
         ...state,
         isAuthenticated: false,
-        user: undefined
+        user: undefined,
       }
 
     default:
