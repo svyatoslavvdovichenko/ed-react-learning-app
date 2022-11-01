@@ -2,18 +2,45 @@ import { Button, Card } from 'antd'
 import { Col, Row } from 'antd/lib/grid'
 import Text from 'antd/lib/typography/Text'
 import { FC } from 'react'
+import styled from 'styled-components'
 import { Layout } from '../components/Layout'
 import { StyledText } from '../components/common/StyledComponents'
 import { useUser } from '../hooks/useUser'
 import { TaskItem } from '../components/dashboard/TaskItem'
 import { EditOutlined } from '@ant-design/icons'
 
+const DoneTaskLine = styled.div`
+  width: 35%;
+  display: flex;
+  border-bottom: 1px solid #EEEEEE;
+  flex-wrap: nowrap;
+`
+const DoneTaskText = styled(StyledText)`
+  margin-top: 20px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  width: 100%;
+`
+
+const CountDoneTasks = styled(StyledText)`
+  margin-top: 20px;
+  font-size: 14px;
+`
+
+const StyledEmail = styled(Text)`
+  margin-top: -10px;
+`
+
+const StyledRow = styled(Row)`
+  margin-top: 30px
+`
+
 export const UserProfile: FC = () => {
   const { user } = useUser()
 
   return (
     <Layout>
-      <Row justify="center">
+      <StyledRow justify="center">
         <Col flex="0 1 970px">
           <Card>
             <Row justify="space-between">
@@ -27,52 +54,37 @@ export const UserProfile: FC = () => {
                 <Button
                   type="primary"
                   ghost
-                  style={{ height: 40, marginRight: 20 }}
+                  icon={<EditOutlined />}
                 >
-                  <EditOutlined />
                   Редактировать профиль
                 </Button>
               </Col>
             </Row>
 
             <Row>
-              <Text style={{ marginTop: '-10px' }} disabled>
+              <StyledEmail disabled>
                 {user?.email}
-              </Text>
+              </StyledEmail>
             </Row>
 
-            <Row style={{ marginTop: '30px' }}>
+            <Row>
               <StyledText>Статистика пользователя</StyledText>
             </Row>
 
-            <Row
-              style={{
-                width: '35%',
-                display: 'flex',
-                borderBottom: '1px solid #EEEEEE',
-                flexWrap: 'nowrap',
-              }}
-            >
-              <StyledText
-                style={{
-                  marginTop: '20px',
-                  paddingBottom: '10px',
-                  fontSize: '14px',
-                  width: '100%',
-                }}
-              >
+            <DoneTaskLine>
+              <DoneTaskText>
                 Заданий выполнено
-              </StyledText>
+              </DoneTaskText>
 
-              <StyledText style={{ marginTop: '20px', fontSize: '14px' }}>
+              <CountDoneTasks>
                 {user?.completed_tasks.length}
-              </StyledText>
-            </Row>
+              </CountDoneTasks>
+            </DoneTaskLine>
           </Card>
         </Col>
-      </Row>
+      </StyledRow>
 
-      <Row justify="center" style={{ marginTop: '30px' }}>
+      <StyledRow justify="center">
         <Col flex="0 1 970px">
           <Card>
             <StyledText>Активные задания</StyledText>
@@ -83,30 +95,33 @@ export const UserProfile: FC = () => {
                   <TaskItem key={task.id} task={task} />
                 ))
               ) : (
-                <StyledText style={{ marginTop: '10px', fontSize: '14px' }}>
+                <StyledText>
                   Нет активных заданий
                 </StyledText>
               )}
             </Row>
           </Card>
         </Col>
-      </Row>
+      </StyledRow>
 
-      <Row justify="center" style={{ marginTop: '30px' }}>
+      <StyledRow justify="center">
         <Col flex="0 1 970px">
           <Card>
-            <StyledText>Выполненные задания</StyledText>
+            <Row>
+              <StyledText>Выполненные задания</StyledText>
+            </Row>
 
             {!! user?.completed_tasks.length ? (
               user?.completed_tasks.map((task) => (
                 <TaskItem key={task.id} task={task} />
               ))
             ) : (
-              <p style={{ marginTop: '10px' }}>Нет выполненных заданий</p>
+              <Text>Нет выполненных заданий</Text>
             )}
+
           </Card>
         </Col>
-      </Row>
+      </StyledRow>
     </Layout>
   )
 }
