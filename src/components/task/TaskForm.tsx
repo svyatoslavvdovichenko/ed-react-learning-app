@@ -53,7 +53,7 @@ export const TaskForm: FC<TaskFormProps> = ({
         validationSchema={TaskSchema}
       >
         {({ isValid, values, dirty, setValues, submitForm }) => (
-          <Form onSubmit={() => console.log(values)}>
+          <Form>
             <InputField
               label="Название задания"
               name="title"
@@ -125,7 +125,6 @@ export const TaskForm: FC<TaskFormProps> = ({
                       <Tag
                         key={item}
                         color="processing"
-                        style={{ margin: '3px 6px 3px 0' }}
                       >
                         {item}
                         <CloseIcon
@@ -147,10 +146,9 @@ export const TaskForm: FC<TaskFormProps> = ({
 
             <Row justify="end">
               <Button
-                style={{ height: 40 }}
                 type="primary"
+                htmlType="submit"
                 disabled={!isValid || !dirty}
-                onClick={submitForm}
               >
                 {isEdit && <SaveOutlined />}
                 {submitButtonText}

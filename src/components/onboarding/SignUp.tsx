@@ -45,9 +45,14 @@ export const SignUp = () => {
     >
       {({ isValid }) => (
         <Form>
-          <Row style={{display: "flex", gap: "5px"}}>
-            <InputField name="firstName" placeholder="Введите Имя" />
-            <InputField name="lastName" placeholder="Введите Фамилию" />
+          <Row gutter={8}>
+            <Col>
+              <InputField name="firstName" placeholder="Введите Имя" />
+            </Col>
+
+            <Col>
+              <InputField name="lastName" placeholder="Введите Фамилию" />
+            </Col>
           </Row>
           
           <InputField name="email" placeholder="Введите Email" />
