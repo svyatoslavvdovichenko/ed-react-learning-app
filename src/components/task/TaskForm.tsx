@@ -22,6 +22,17 @@ const CloseIcon = styled(CloseOutlined)`
   }
 `
 
+const StyledButton = styled(Button)`
+  button {
+    height: 40px; 
+    marginRight: 20px;
+  }
+`
+const StyledRow = styled(Row)`
+  margin-bottom: 16px;
+  overflow: hidden;
+`
+
 export interface TaskFormProps {
   initialValues: any
   handleSubmit: (values: any) => void
@@ -96,7 +107,7 @@ export const TaskForm: FC<TaskFormProps> = ({
               name="attachments"
               render={(arrayHelpers) => (
                 <>
-                  <Row gutter={[8, 0]} style={{ marginBottom: 19 }}>
+                  <Row gutter={[8, 0]}>
                     <Col span={18}>
                       <Input
                         type="url"
@@ -125,7 +136,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                     </Col>
                   </Row>
 
-                  <Row style={{ marginBottom: '16px', overflow: 'hidden' }}>
+                  <Row>
                     {values.attachments.map((item: any) => (
                       <Tag
                         key={item}
@@ -150,19 +161,27 @@ export const TaskForm: FC<TaskFormProps> = ({
               )}
             />
 
-            <Row justify="end">
-              <Button
-                style={{ height: 40 }}
+            <StyledRow justify="end">
+              <StyledButton
+                type="primary"
+                ghost
+                onClick={() => navigate.push('/dashboard')}
+                icon={<LeftOutlined />}
+              >
+                Назад
+              </StyledButton>
+              
+              <StyledButton
                 type="primary"
                 disabled={!isValid || !dirty}
                 onClick={() => {
                   handleSubmit(values);
                 }}
+                icon={isEdit && <SaveOutlined />}
               >
-                {isEdit && <SaveOutlined />}
                 {submitButtonText}
-              </Button>
-            </Row>
+              </StyledButton>
+            </StyledRow>
           </Form>
         )}
       </Formik>
