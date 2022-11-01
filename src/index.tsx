@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AuthorizationApp } from './AuthorizationApp'
 import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from './hocs/AuthProvider'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ApiProvider } from './hocs/ApiProvider'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -21,9 +20,7 @@ ReactDOM.render(
         <BrowserRouter>
           <Provider store={store}>
             <ApiProvider>
-              <AuthProvider>
-                <AuthorizationApp />
-              </AuthProvider>
+              <AuthorizationApp />
             </ApiProvider>
           </Provider>
         </BrowserRouter>
