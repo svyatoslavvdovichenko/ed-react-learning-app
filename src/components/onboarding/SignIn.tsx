@@ -6,9 +6,11 @@ import { InputField } from '../forms/InputField'
 import { StyledButton } from '../common/StyledComponents'
 import { useApi } from '../../hooks/useApi'
 import { sendErrorNotification } from '../../utils/systemNotification'
+import { useActions } from '../../hooks/useActions'
 
 export const SignIn = () => {
   const navigate = useNavigate();
+  const { setAuthenticated } = useActions();
   
   const api = useApi()
 
@@ -17,8 +19,9 @@ export const SignIn = () => {
       .post('login/', { ...values })
       .then(({ data }) => {
         if (data) {
-          localStorage.setItem('authToken', data.token)
-          navigate('/dashboard')
+          localStorage.setItem('authToken', data.token);
+          navigate('/dashboard');
+          setAuthenticated(true);
         }
       })
       .catch(() => {
