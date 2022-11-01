@@ -37,9 +37,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
 
-  const { technologies, specializations } = useReferences()
-
-  const navigate = useHistory();
+  const { technologies } = useReferences();
 
   return (
     <Card
@@ -49,11 +47,11 @@ export const TaskForm: FC<TaskFormProps> = ({
     >
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={handleSubmit}
         validationSchema={TaskSchema}
       >
         {({ isValid, values, dirty, setValues, submitForm }) => (
-          <Form onSubmit={() => console.log(values)}>
+          <Form>
             <InputField
               label="Название задания"
               name="title"
@@ -125,7 +123,6 @@ export const TaskForm: FC<TaskFormProps> = ({
                       <Tag
                         key={item}
                         color="processing"
-                        style={{ margin: '3px 6px 3px 0' }}
                       >
                         {item}
                         <CloseIcon
@@ -150,9 +147,9 @@ export const TaskForm: FC<TaskFormProps> = ({
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
-                onClick={submitForm}
-              >
-                {isEdit && <SaveOutlined />}
+                htmlType="submit"
+                icon={isEdit && <SaveOutlined />}
+              >                
                 {submitButtonText}
               </Button>
             </Row>
