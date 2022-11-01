@@ -34,7 +34,7 @@ export const UserApp: FC = () => (
         element={<PrivateRoute privateElement={<UserProfile />} />}
       />
 
-      
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   </>
 )
