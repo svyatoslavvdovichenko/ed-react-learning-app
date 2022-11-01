@@ -39,9 +39,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 
   const { technologies } = useTypedSelector((state) => state.referenceReducer)
 
-  const navigate = useHistory()
-
-  console.log('initialValues!!!', initialValues)
+  const navigate = useHistory();
 
   return (
     <Card
@@ -68,6 +66,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                 <SelectField
                   $marginBottom={19}
                   label="Направление"
+                  placeholder="Выберите направление"
                   name="specialization"
                   options={SPECIALIZATION_LIST}
                   shouldUpdate={{ shouldUpdate: () => true }}
@@ -78,6 +77,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                 <MultipleSelectField
                   $marginBottom={19}
                   label="Технологии"
+                  placeholder="Выберите технологии"
                   name="technologies"
                   options={technologies ?? []}
                   shouldUpdate={{ shouldUpdate: () => true }}
@@ -99,6 +99,9 @@ export const TaskForm: FC<TaskFormProps> = ({
                   <Row gutter={[8, 0]} style={{ marginBottom: 19 }}>
                     <Col span={18}>
                       <Input
+                        type="url"
+                        pattern="https://.*"
+                        placeholder="https://example.com"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                       />
@@ -108,8 +111,8 @@ export const TaskForm: FC<TaskFormProps> = ({
                       <Button
                         onClick={() => {
                           if (inputValue) {
-                            arrayHelpers.push(inputValue)
-                            setInputValue('')
+                            arrayHelpers.push(inputValue);
+                            setInputValue('');
                           }
                         }}
                         icon={<LinkOutlined />}
@@ -149,9 +152,22 @@ export const TaskForm: FC<TaskFormProps> = ({
 
             <Row justify="end">
               <Button
+                type="primary"
+                ghost
+                onClick={() => navigate.push('/dashboard')}
+                style={{ height: 40, marginRight: 20 }}
+              >
+                <LeftOutlined />
+                Назад
+              </Button>
+              
+              <Button
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
+                onClick={() => {
+                  handleSubmit(values);
+                }}
               >
                 {isEdit && <SaveOutlined />}
                 {submitButtonText}
