@@ -9,21 +9,30 @@ import { sendErrorNotification } from '../../utils/systemNotification'
 import { useActions } from '../../hooks/useActions'
 
 export const SignIn = () => {
-  const navigate = useNavigate();
-  const { setUser } = useActions();
-  
+  const navigate = useNavigate()
+  const { setUser } = useActions()
+
   const api = useApi()
+
+  const getUserProfile = () => {
+    api
+      .get('user/profile/')
+      .then(({ data }) => {
+        setUser({ user: data })
+      })
+      .catch(() => {
+        navigate('/auth')
+      })
+  }
 
   const onLogin = (values: any) => {
     api
       .post('login/', { ...values })
       .then(({ data }) => {
         if (data) {
-          setUser({ user: data });
-          
-          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('authToken', data.token)
+          getUserProfile();
           navigate('/dashboard');
-          
         }
       })
       .catch(() => {
