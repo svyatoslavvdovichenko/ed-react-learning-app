@@ -12,6 +12,7 @@ import styled, { css } from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useUser } from '../hooks/useUser'
+import { useTypedSelector } from '../hooks/useTypeSelector'
 
 const { Title } = Typography
 
@@ -42,7 +43,7 @@ export const Layout: FC<LayoutPropsType> = ({
   const { onLogout } = useAuth()
   const navigate = useNavigate()
 
-  const { user } = useUser()
+  const { isAuthenticated, user } = useTypedSelector(state => state.authReducer)
 
   return (
     <AntdLayout style={{ minHeight: '100vh' }}>
@@ -63,7 +64,7 @@ export const Layout: FC<LayoutPropsType> = ({
             </Title>
           </Link>
 
-          {user && (
+          {isAuthenticated && (
             <Dropdown
               overlay={
                 <Menu>
@@ -88,7 +89,7 @@ export const Layout: FC<LayoutPropsType> = ({
               <Button>
                 <UserOutlined />
 
-                {user.first_name}
+                {user?.first_name}
               </Button>
             </Dropdown>
           )}

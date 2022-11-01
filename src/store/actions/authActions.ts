@@ -8,7 +8,7 @@ export const loginUser = (payload: any) => {
   }
 }
 
-export const setUser = (payload: { user: IUser }) => {
+export const setUser = (payload: { user: IUser }) => { 
   return {
     type: AuthActionTypes.SET_USER,
     payload,

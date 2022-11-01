@@ -10,7 +10,7 @@ import { useActions } from '../../hooks/useActions'
 
 export const SignIn = () => {
   const navigate = useNavigate();
-  const { setAuthenticated } = useActions();
+  const { setUser } = useActions();
   
   const api = useApi()
 
@@ -19,9 +19,11 @@ export const SignIn = () => {
       .post('login/', { ...values })
       .then(({ data }) => {
         if (data) {
+          setUser({ user: data });
+          
           localStorage.setItem('authToken', data.token);
           navigate('/dashboard');
-          setAuthenticated(true);
+          
         }
       })
       .catch(() => {
