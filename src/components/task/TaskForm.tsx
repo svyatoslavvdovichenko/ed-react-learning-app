@@ -28,6 +28,10 @@ const StyledButton = styled(Button)`
     marginRight: 20px;
   }
 `
+const StyledRow = styled(Row)`
+  margin-bottom: 16px;
+  overflow: hidden;
+`
 
 export interface TaskFormProps {
   initialValues: any
@@ -103,7 +107,7 @@ export const TaskForm: FC<TaskFormProps> = ({
               name="attachments"
               render={(arrayHelpers) => (
                 <>
-                  <Row gutter={[8, 0]} style={{ marginBottom: 19 }}>
+                  <Row gutter={[8, 0]}>
                     <Col span={18}>
                       <Input
                         type="url"
@@ -132,7 +136,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                     </Col>
                   </Row>
 
-                  <Row style={{ marginBottom: '16px', overflow: 'hidden' }}>
+                  <Row>
                     {values.attachments.map((item: any) => (
                       <Tag
                         key={item}
@@ -157,7 +161,7 @@ export const TaskForm: FC<TaskFormProps> = ({
               )}
             />
 
-            <Row justify="end">
+            <StyledRow justify="end">
               <StyledButton
                 type="primary"
                 ghost
@@ -177,7 +181,7 @@ export const TaskForm: FC<TaskFormProps> = ({
               >
                 {submitButtonText}
               </StyledButton>
-            </Row>
+            </StyledRow>
           </Form>
         )}
       </Formik>
