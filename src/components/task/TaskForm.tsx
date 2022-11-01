@@ -1,4 +1,4 @@
-import { LeftOutlined, LinkOutlined, SaveOutlined } from '@ant-design/icons'
+import { LinkOutlined, SaveOutlined } from '@ant-design/icons'
 import { Button, Card, Col, Input, Row, Tag } from 'antd'
 import { FieldArray, Form, Formik } from 'formik'
 import { FC, useState } from 'react'
@@ -37,11 +37,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
 
-  const { technologies } = useReferences()
-
-  const navigate = useHistory()
-
-  console.log('initialValues!!!', initialValues)
+  const { technologies } = useReferences();
 
   return (
     <Card
@@ -51,10 +47,10 @@ export const TaskForm: FC<TaskFormProps> = ({
     >
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={handleSubmit}
         validationSchema={TaskSchema}
       >
-        {({ isValid, values, dirty, setValues }) => (
+        {({ isValid, values, dirty, setValues, submitForm }) => (
           <Form>
             <InputField
               label="Название задания"
@@ -62,7 +58,6 @@ export const TaskForm: FC<TaskFormProps> = ({
               placeholder="Введите название"
               $marginBottom={19}
             />
-            {console.log('values', values)}
 
             <Row gutter={[8, 0]}>
               <Col span={12}>
@@ -109,8 +104,8 @@ export const TaskForm: FC<TaskFormProps> = ({
                       <Button
                         onClick={() => {
                           if (inputValue) {
-                            arrayHelpers.push(inputValue)
-                            setInputValue('')
+                            arrayHelpers.push(inputValue);
+                            setInputValue('');
                           }
                         }}
                         icon={<LinkOutlined />}
@@ -128,7 +123,6 @@ export const TaskForm: FC<TaskFormProps> = ({
                       <Tag
                         key={item}
                         color="processing"
-                        style={{ margin: '3px 6px 3px 0' }}
                       >
                         {item}
                         <CloseIcon
@@ -153,8 +147,9 @@ export const TaskForm: FC<TaskFormProps> = ({
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
-              >
-                {isEdit && <SaveOutlined />}
+                htmlType="submit"
+                icon={isEdit && <SaveOutlined />}
+              >                
                 {submitButtonText}
               </Button>
             </Row>
