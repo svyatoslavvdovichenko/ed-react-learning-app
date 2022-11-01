@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd/lib/grid'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Layout } from '../components/Layout'
 import { TaskForm } from '../components/task/TaskForm'
 import { ERROR_NOTIFIFCATION_MESSAGE } from '../constants'
@@ -16,7 +16,7 @@ import {
 
 export const NewTask = () => {
   const api = useApi()
-  const navigate = useHistory()
+  const navigate = useNavigate()
 
   const { technologies, specializations } = useTypedSelector(
     (state) => state.referenceReducer,
@@ -38,7 +38,7 @@ export const NewTask = () => {
       })
       .then(() => {
         sendSuccessNotification('Задание успешно создано')
-        navigate.push('/dashboard')
+        navigate('/dashboard')
       })
       .catch((err) => sendErrorNotification(ERROR_NOTIFIFCATION_MESSAGE))
   }

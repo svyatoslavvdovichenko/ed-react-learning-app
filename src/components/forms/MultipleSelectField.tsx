@@ -22,14 +22,12 @@ export const MultipleSelectField: FC<SelectFieldProps> = ({
           form: { setFieldValue },
         }: FieldProps) => (
           <Row>
-            {console.log('initialValue', initialValue)}
-            {console.log('options', options)}
-            {console.log('value', value)}
             <GlobalSelectStyle hasError={Boolean(error) && touched} />
+
             {label && <Row style={{ marginBottom: 10 }}>{label}</Row>}
+
             <Select
               defaultValue={initialValue}
-              // value={value || null}
               onChange={(val) => {
                 setFieldValue(name, val)
               }}

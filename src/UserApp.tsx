@@ -6,40 +6,35 @@ import { NewTask } from './pages/NewTask'
 import { UserProfile } from './pages/UserProfile'
 import { EditTask } from './pages/EditTask'
 import { ReferencesProvider } from './hocs/ReferencesProvider'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 export const UserApp: FC = () => (
-  <ReferencesProvider>
-    <Switch>
+  <>
+    <Routes>
       <Route
         path="/dashboard"
-        exact
-        render={() => <PrivateRoute privateElement={<Dashboard />} />}
+        element={<PrivateRoute privateElement={<Dashboard />} />}
       />
       <Route
         path="/task/:taskId"
-        exact
-        render={() => <PrivateRoute privateElement={<TaskProfile />} />}
+        element={<PrivateRoute privateElement={<TaskProfile />} />}
       />
       <Route
         path="/task/:taskId/edit"
-        exact
-        render={() => <PrivateRoute privateElement={<EditTask />} />}
+        element={<PrivateRoute privateElement={<EditTask />} />}
       />
 
       <Route
         path="/new-task"
-        exact
-        render={() => <PrivateRoute privateElement={<NewTask />} />}
+        element={<PrivateRoute privateElement={<NewTask />} />}
       />
 
       <Route
         path="/profile"
-        exact
-        render={() => <PrivateRoute privateElement={<UserProfile />} />}
+        element={<PrivateRoute privateElement={<UserProfile />} />}
       />
 
-      <Redirect to="/dashboard" />
-    </Switch>
-  </ReferencesProvider>
+      
+    </Routes>
+  </>
 )

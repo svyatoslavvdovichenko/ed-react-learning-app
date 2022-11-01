@@ -43,8 +43,8 @@ export const transformKeys = (
 export const createApi = () => {
   return axios.create({
     baseURL: API_URL,
-    paramsSerializer: (params) =>
-      qs.stringify(transformKeys(params, snakeCase)),
+    /*paramsSerializer: params =>
+      qs.stringify(transformKeys(params, snakeCase)),*/
     responseType: 'json',
     timeout: 30000,
   })

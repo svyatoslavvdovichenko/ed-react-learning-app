@@ -1,19 +1,17 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { Row, Col, Button } from 'antd'
 import { FiltersCard } from '../components/dashboard/FiltersCard'
 import { TasksCard } from '../components/dashboard/TasksCard'
 import { TaskSearchForm } from '../components/dashboard/TaskSearchForm'
 import { Layout } from '../components/Layout'
-
 import { AdminRequired } from '../hocs/AdminRequired'
-import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { useQueryRequest } from '../hooks/useQueryRequest'
 import { ISpecialization, ITechnology } from '../types'
 import { useActions } from '../hooks/useActions'
 
 export const Dashboard: FC = () => {
-  const navigate = useHistory()
+  const navigate = useNavigate()
   const { setReferences } = useActions()
 
   const { data: dataTech } = useQueryRequest<ITechnology[]>('v1/technologies/')
@@ -41,7 +39,7 @@ export const Dashboard: FC = () => {
                 <AdminRequired>
                   <Col flex="100px" style={{ padding: '0 0 0 8px' }}>
                     <Button
-                      onClick={() => navigate.push('/new-task')}
+                      onClick={() => navigate('/new-task')}
                       size="large"
                       block
                     >

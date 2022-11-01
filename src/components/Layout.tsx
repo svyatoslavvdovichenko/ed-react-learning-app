@@ -9,7 +9,7 @@ import {
 } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import styled, { css } from 'styled-components'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useUser } from '../hooks/useUser'
 
@@ -31,7 +31,8 @@ const StyledContent = styled(Content)<{ $shouldBeCentered: boolean }>`
 `
 
 export type LayoutPropsType = {
-  shouldBeCentered?: boolean
+  children: React.ReactNode;
+  shouldBeCentered?: boolean;
 }
 
 export const Layout: FC<LayoutPropsType> = ({
@@ -39,7 +40,7 @@ export const Layout: FC<LayoutPropsType> = ({
   shouldBeCentered = false,
 }) => {
   const { onLogout } = useAuth()
-  const navigate = useHistory()
+  const navigate = useNavigate()
 
   const { user } = useUser()
 
@@ -76,7 +77,7 @@ export const Layout: FC<LayoutPropsType> = ({
                     key="3"
                     onClick={() => {
                       onLogout()
-                      navigate.push('/auth')
+                      navigate('/auth')
                     }}
                   >
                     Выйти

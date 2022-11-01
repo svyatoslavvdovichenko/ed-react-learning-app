@@ -1,16 +1,14 @@
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Checkbox, Row } from 'antd'
 import { Formik, Form } from 'formik'
 import { SingInSchema } from '../../forms/validators'
 import { InputField } from '../forms/InputField'
 import { StyledButton } from '../common/StyledComponents'
 import { useApi } from '../../hooks/useApi'
-import { useEffect, useState } from 'react'
 import { sendErrorNotification } from '../../utils/systemNotification'
-import { useActions } from '../../hooks/useActions'
 
 export const SignIn = () => {
-  const navigate = useHistory();
+  const navigate = useNavigate();
   
   const api = useApi()
 
@@ -20,7 +18,7 @@ export const SignIn = () => {
       .then(({ data }) => {
         if (data) {
           localStorage.setItem('authToken', data.token)
-          navigate.push('/dashboard')
+          navigate('/dashboard')
         }
       })
       .catch(() => {

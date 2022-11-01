@@ -1,21 +1,18 @@
 import { FC } from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Authorization } from './pages/Authorization'
 import { ForgetPassword } from './components/onboarding/ForgetPassword'
 import { UserApp } from './UserApp'
 
 export const AuthorizationApp: FC = () => (
-  <Switch>
-    <Redirect exact from="/" to="/dashboard" />
+  <>
+    <Routes>
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
 
-    <Route path="/auth" exact>
-      <Authorization />
-    </Route>
+      <Route path="/auth" element={<Authorization />} />
 
-    <Route path="/forget-password" exact>
-      <ForgetPassword />
-    </Route>
-
+      <Route path="/forget-password" element={<ForgetPassword />} />
+    </Routes>
     <UserApp />
-  </Switch>
+  </>
 )
