@@ -18,5 +18,4 @@ export const Response: FC<ResponseProps> = ({ key, children }) => {
   }
 
   return <>{children}</>
-  // return () => children(data)
 }

@@ -7,7 +7,6 @@ import { Layout } from '../components/Layout'
 
 import { AdminRequired } from '../hocs/AdminRequired'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { useQueryRequest } from '../hooks/useQueryRequest'
 import { ISpecialization, ITechnology } from '../types'
 import { useActions } from '../hooks/useActions'

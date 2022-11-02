@@ -19,8 +19,6 @@ export const Authorization = () => {
   let searchParams = new URLSearchParams(location.search)
   const activeTabKey = searchParams.get('tab')
 
-  console.log('history', history)
-  console.log('location', location)
   return (
     <Layout shouldBeCentered={true}>
       <Row justify="center" align="middle" style={{ height: '100%' }}>

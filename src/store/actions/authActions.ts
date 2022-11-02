@@ -9,8 +9,6 @@ export const loginUser = (payload: any) => {
 }
 
 export const setUser = (payload: { user: IUser }) => {
-  //localStorage.setItem('authToken', );
-
   return {
     type: AuthActionTypes.SET_USER,
     payload,

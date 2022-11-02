@@ -12,7 +12,7 @@ import { TextareaField } from '../forms/TextareaField'
 import { CloseOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import { useTypedSelector } from '../../hooks/useTypeSelector'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const CloseIcon = styled(CloseOutlined)`
   svg {
