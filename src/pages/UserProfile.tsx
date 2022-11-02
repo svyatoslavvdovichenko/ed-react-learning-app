@@ -7,7 +7,7 @@ import { Layout } from '../components/Layout'
 import { StyledText } from '../components/common/StyledComponents'
 import { useUser } from '../hooks/useUser'
 import { TaskItem } from '../components/dashboard/TaskItem'
-import { EditOutlined } from '@ant../hooks/useTypedSelector
+import EditOutlined from '@ant-design/icons/lib/icons/EditOutlined'
 
 const DoneTaskLine = styled.div`
   width: 35%;

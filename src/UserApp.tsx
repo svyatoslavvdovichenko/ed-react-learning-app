@@ -1,15 +1,17 @@
 import { FC } from 'react'
 import { Dashboard } from './pages/Dashboard'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import { PrivateRoute } from './hocs/PrivateRoute'
 import { TaskProfile } from './pages/TaskProfile'
 import { NewTask } from './pages/NewTask'
 import { UserProfile } from './pages/UserProfile'
 import { EditTask } from './pages/EditTask'
-import { ReferencesProvider } from './hocs/ReferencesProvider'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Reference } from './hocs/Reference'
+
+
 
 export const UserApp: FC = () => (
-  <ReferencesProvider>
+  <Reference>
     <Switch>
       <Route
         path="/dashboard"
@@ -41,5 +43,5 @@ export const UserApp: FC = () => (
 
       <Redirect to="/dashboard" />
     </Switch>
-  </ReferencesProvider>
+  </Reference>
 )
