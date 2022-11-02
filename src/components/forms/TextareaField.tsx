@@ -26,7 +26,7 @@ export const TextareaField: FC<TextareaFieldProps> = ({
           <>
             {label && <Row style={{ marginBottom: 10 }}>{label}</Row>}
 
-            <TextArea placeholder={placeholder} {...field} />
+            <TextArea id='description' placeholder={placeholder} {...field} />
           </>
         )}
       </Field>

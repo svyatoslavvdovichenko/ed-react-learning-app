@@ -64,6 +64,7 @@ export const TaskForm: FC<TaskFormProps> = ({
             <Row gutter={[8, 0]}>
               <Col span={12}>
                 <SelectField
+                  data-testid='specialization'
                   $marginBottom={19}
                   label="Направление"
                   placeholder="Выберите направление"
@@ -75,6 +76,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 
               <Col span={12}>
                 <MultipleSelectField
+                  data-testid="technologies"
                   $marginBottom={19}
                   label="Технологии"
                   placeholder="Выберите технологии"
@@ -165,6 +167,7 @@ export const TaskForm: FC<TaskFormProps> = ({
                 style={{ height: 40 }}
                 type="primary"
                 disabled={!isValid || !dirty}
+                htmlType="submit"
                 onClick={() => {
                   handleSubmit(values);
                 }}
