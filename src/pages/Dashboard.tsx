@@ -6,20 +6,9 @@ import { TaskSearchForm } from '../components/dashboard/TaskSearchForm'
 import { Layout } from '../components/Layout'
 import { AdminRequired } from '../hocs/AdminRequired'
 import { useNavigate } from 'react-router-dom'
-import { useQueryRequest } from '../hooks/useQueryRequest'
-import { ISpecialization, ITechnology } from '../types'
-import { useActions } from '../hooks/useActions'
 
 export const Dashboard: FC = () => {
   const navigate = useNavigate()
-  const { setReferences } = useActions()
-
-  const { data: dataTech } = useQueryRequest<ITechnology[]>('v1/technologies/')
-  const { data: dataSpec } = useQueryRequest<ISpecialization[]>(
-    'v1/specializations/',
-  )
-
-  setReferences({ technologies: dataTech!, specializations: dataSpec! })
 
   return (
     <Layout>

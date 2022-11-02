@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Checkbox, Row } from 'antd'
 import { Formik, Form } from 'formik'
@@ -7,10 +8,13 @@ import { StyledButton } from '../common/StyledComponents'
 import { useApi } from '../../hooks/useApi'
 import { sendErrorNotification } from '../../utils/systemNotification'
 import { useActions } from '../../hooks/useActions'
+import { Loader } from '../common/Loader'
 
 export const SignIn = () => {
+  const [ isLoading, setIsLoading ] = useState<boolean>(false);
+
   const navigate = useNavigate()
-  const { setUser } = useActions()
+  const { setUser, setAuthHeader } = useActions()
 
   const api = useApi()
 
@@ -26,18 +30,26 @@ export const SignIn = () => {
   }
 
   const onLogin = (values: any) => {
+    setIsLoading(true);
     api
       .post('login/', { ...values })
       .then(({ data }) => {
         if (data) {
           localStorage.setItem('authToken', data.token)
-          getUserProfile();
-          navigate('/dashboard');
+          setAuthHeader({ token: data.token })
+          getUserProfile()
+          navigate('/dashboard')
+          setIsLoading(false);
         }
       })
       .catch(() => {
+        setIsLoading(false);
         sendErrorNotification('Пользователь с введенными данными не найден')
       })
+  }
+
+  if (isLoading) {
+    return <Loader fullScreen />
   }
 
   return (

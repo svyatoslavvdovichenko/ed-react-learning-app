@@ -86,9 +86,7 @@ export const Layout: FC<LayoutPropsType> = ({
                 </Menu>
               }
             >
-              <Button>
-                <UserOutlined />
-
+              <Button icon={<UserOutlined />}>
                 {user?.first_name}
               </Button>
             </Dropdown>
