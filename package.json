@@ -52,7 +52,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --write src/",
     "prepare": "husky install",
-    "update": "npx npm-check-updates"
+    "update": "npx npm-check-updates -u"
   },
   "eslintConfig": {
     "extends": [
