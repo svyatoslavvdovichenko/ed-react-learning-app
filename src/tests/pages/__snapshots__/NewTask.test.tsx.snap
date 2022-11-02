@@ -1,0 +1,351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewTask form works currently 1`] = `
+<div>
+  <section
+    class="ant-layout"
+    style="min-height: 100vh;"
+  >
+    <header
+      class="ant-layout-header"
+      style="background-color: white; border-bottom: 1px solid #F0F0F0;"
+    >
+      <div
+        class="ant-row ant-row-space-between ant-row-middle"
+        style="width: 100%; height: 100%;"
+      >
+        <div />
+      </div>
+    </header>
+    <main
+      class="ant-layout-content sc-ftTHYK kZHTsf"
+    >
+      <div
+        class="ant-row ant-row-center"
+      >
+        <div
+          class="ant-col"
+          style="flex: 0 1 970px;"
+        >
+          <div
+            class="ant-card ant-card-bordered"
+          >
+            <div
+              class="ant-card-head"
+              style="padding: 16px 32px 0px;"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  Добавление нового задания
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+              style="padding: 16px 32px 32px;"
+            >
+              <form
+                action="#"
+              >
+                <div
+                  class="sc-dkrFOg jafsBz"
+                >
+                  <div
+                    class="ant-row"
+                    style="margin-bottom: 10px;"
+                  >
+                    Название задания
+                  </div>
+                  <input
+                    class="ant-input sc-hLBbgP hibjcZ"
+                    name="title"
+                    placeholder="Введите название"
+                    type="text"
+                    value="John"
+                  />
+                </div>
+                <div
+                  class="ant-row"
+                  style="margin-left: -4px; margin-right: -4px;"
+                >
+                  <div
+                    class="ant-col ant-col-12"
+                    style="padding-left: 4px; padding-right: 4px;"
+                  >
+                    <div
+                      class="sc-dkrFOg jafsBz"
+                    >
+                      <div
+                        class="ant-row"
+                      >
+                        <div
+                          class="ant-row"
+                          style="margin-bottom: 10px;"
+                        >
+                          Направление
+                        </div>
+                        <div
+                          class="ant-select ant-select-single ant-select-show-arrow"
+                          data-testid="specialization"
+                        >
+                          <div
+                            class="ant-select-selector"
+                          >
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+                                aria-autocomplete="list"
+                                aria-controls="rc_select_TEST_OR_SSR_list"
+                                aria-haspopup="listbox"
+                                aria-owns="rc_select_TEST_OR_SSR_list"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                id="rc_select_TEST_OR_SSR"
+                                readonly=""
+                                role="combobox"
+                                style="opacity: 0;"
+                                type="search"
+                                unselectable="on"
+                                value=""
+                              />
+                            </span>
+                            <span
+                              class="ant-select-selection-placeholder"
+                            >
+                              Выберите направление
+                            </span>
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-col ant-col-12"
+                    style="padding-left: 4px; padding-right: 4px;"
+                  >
+                    <div
+                      class="sc-dkrFOg jafsBz"
+                    >
+                      <div
+                        class="ant-row"
+                      >
+                        <div
+                          class="ant-row"
+                          style="margin-bottom: 10px;"
+                        >
+                          Технологии
+                        </div>
+                        <div
+                          class="ant-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                          data-testid="technologies"
+                        >
+                          <div
+                            class="ant-select-selector"
+                          >
+                            <div
+                              class="ant-select-selection-overflow"
+                            >
+                              <div
+                                class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                style="opacity: 1;"
+                              >
+                                <div
+                                  class="ant-select-selection-search"
+                                  style="width: 0px;"
+                                >
+                                  <input
+                                    aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+                                    aria-autocomplete="list"
+                                    aria-controls="rc_select_TEST_OR_SSR_list"
+                                    aria-haspopup="listbox"
+                                    aria-owns="rc_select_TEST_OR_SSR_list"
+                                    autocomplete="off"
+                                    class="ant-select-selection-search-input"
+                                    id="rc_select_TEST_OR_SSR"
+                                    readonly=""
+                                    role="combobox"
+                                    style="opacity: 0;"
+                                    type="search"
+                                    unselectable="on"
+                                    value=""
+                                  />
+                                  <span
+                                    aria-hidden="true"
+                                    class="ant-select-selection-search-mirror"
+                                  >
+                                    
+                                     
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <span
+                              class="ant-select-selection-placeholder"
+                            >
+                              Выберите технологии
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="sc-dkrFOg jafsBz"
+                >
+                  <div
+                    class="ant-row"
+                    style="margin-bottom: 10px;"
+                  >
+                    Текст задания
+                  </div>
+                  <textarea
+                    class="ant-input"
+                    data-testid="description"
+                    name="description"
+                    placeholder="Введите текст"
+                  >
+                    sqeqww
+                  </textarea>
+                </div>
+                <div
+                  class="ant-row"
+                  style="margin-left: -4px; margin-right: -4px; margin-bottom: 19px;"
+                >
+                  <div
+                    class="ant-col ant-col-18"
+                    style="padding-left: 4px; padding-right: 4px;"
+                  >
+                    <input
+                      class="ant-input"
+                      pattern="https://.*"
+                      placeholder="https://example.com"
+                      type="url"
+                      value="Exampletext"
+                    />
+                  </div>
+                  <div
+                    class="ant-col ant-col-6"
+                    style="padding-left: 4px; padding-right: 4px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary ant-btn-background-ghost ant-btn-block"
+                      type="button"
+                    >
+                      <span
+                        aria-label="link"
+                        class="anticon anticon-link"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="link"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M574 665.4a8.03 8.03 0 00-11.3 0L446.5 781.6c-53.8 53.8-144.6 59.5-204 0-59.5-59.5-53.8-150.2 0-204l116.2-116.2c3.1-3.1 3.1-8.2 0-11.3l-39.8-39.8a8.03 8.03 0 00-11.3 0L191.4 526.5c-84.6 84.6-84.6 221.5 0 306s221.5 84.6 306 0l116.2-116.2c3.1-3.1 3.1-8.2 0-11.3L574 665.4zm258.6-474c-84.6-84.6-221.5-84.6-306 0L410.3 307.6a8.03 8.03 0 000 11.3l39.7 39.7c3.1 3.1 8.2 3.1 11.3 0l116.2-116.2c53.8-53.8 144.6-59.5 204 0 59.5 59.5 53.8 150.2 0 204L665.3 562.6a8.03 8.03 0 000 11.3l39.8 39.8c3.1 3.1 8.2 3.1 11.3 0l116.2-116.2c84.5-84.6 84.5-221.5 0-306.1zM610.1 372.3a8.03 8.03 0 00-11.3 0L372.3 598.7a8.03 8.03 0 000 11.3l39.6 39.6c3.1 3.1 8.2 3.1 11.3 0l226.4-226.4c3.1-3.1 3.1-8.2 0-11.3l-39.5-39.6z"
+                          />
+                        </svg>
+                      </span>
+                      <span>
+                        Добавить
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="ant-row"
+                  style="margin-bottom: 16px; overflow: hidden;"
+                />
+                <div
+                  class="ant-row ant-row-end"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary ant-btn-background-ghost"
+                    style="height: 40px; margin-right: 20px;"
+                    type="button"
+                  >
+                    <span
+                      aria-label="left"
+                      class="anticon anticon-left"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="left"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                        />
+                      </svg>
+                    </span>
+                    <span>
+                      Назад
+                    </span>
+                  </button>
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    style="height: 40px;"
+                    type="submit"
+                  >
+                    <span>
+                      Добавить
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="ant-layout-footer"
+      style="background-color: rgb(240, 240, 240);"
+    >
+      Exceed Challenger 2022
+    </footer>
+  </section>
+</div>
+`;
