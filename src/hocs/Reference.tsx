@@ -1,34 +1,16 @@
-import { FC } from 'react'
-import { Loader } from '../components/common/Loader'
-import { useActions } from '../hooks/useActions';
-import { useQueryRequest } from '../hooks/useQueryRequest'
-import { ITechnology, ISpecialization } from '../types'
+import { FC, useEffect } from 'react'
+import { useActions } from '../hooks/useActions'
 
 interface IReference {
   children: React.ReactNode
 }
 
 export const Reference: FC<IReference> = ({ children }) => {
-  const { setReferences } = useActions();
+  const { fetchReferences } = useActions()
 
-  const { data: dataTech, isLoading: isLoadingTech } =
-    useQueryRequest<ITechnology[]>('v1/technologies/')
-  const { data: dataSpec, isLoading: isLoadingSpec } = useQueryRequest<
-    ISpecialization[]
-  >('v1/specializations/');
+  useEffect(() => {
+    fetchReferences()
+  }, [])
 
-  setReferences({
-    technologies: dataTech!,
-    specializations: dataSpec!,
-  })
-
-  return (
-    <>
-      {isLoadingTech || (isLoadingSpec && <Loader />)}
-
-      {!isLoadingTech && dataTech && !isLoadingSpec && dataSpec && (
-        <>{children}</>
-      )}
-    </>
-  )
+  return <>{children}</>
 }

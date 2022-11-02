@@ -7,9 +7,6 @@ import { Layout } from '../components/Layout'
 
 import { AdminRequired } from '../hocs/AdminRequired'
 import { useHistory } from 'react-router-dom'
-import { useQueryRequest } from '../hooks/useQueryRequest'
-import { ISpecialization, ITechnology } from '../types'
-import { useActions } from '../hooks/useActions'
 
 export const Dashboard: FC = () => {
   const navigate = useHistory()
