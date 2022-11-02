@@ -1,5 +1,8 @@
-import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { MemoryRouter, Route, Switch } from 'react-router-dom'
+import { Dashboard } from '../../pages/Dashboard'
 import { EditTask } from '../../pages/EditTask'
 
 jest.mock('react-router-dom', () => {
@@ -41,6 +44,27 @@ jest.mock('../../hooks/useQueryRequest', () => ({
     },
   }),
 }))
+
+const queryClient = new QueryClient()
+
+const renderWithRouter = (component: JSX.Element) => {
+  return {
+    ...render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter initialEntries={['/task/:taskId/edit']}>
+          <Switch>
+            <Route path="/task/:taskId/edit">
+              <EditTask />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </MemoryRouter>
+      </QueryClientProvider>,
+    ),
+  }
+}
 
 jest.mock('../../hooks/useReferences', () => ({
   useReferences: () => ({
@@ -95,4 +119,26 @@ describe('EditTask', () => {
     const { container } = render(<EditTask />)
     expect(container).toBeTruthy()
   })
+
+  test('Placeholder works corrently', () => {
+    render(<EditTask />)
+    expect(screen.getByPlaceholderText(/Введите название/i)).toBeInTheDocument()
+  })
+
+  test('form works currently', () => {
+    const { container, getByTestId, getByText, getByPlaceholderText } = render(<EditTask/>)
+    const user = userEvent;
+  
+    user.type(getByPlaceholderText(/Введите название/i), 'John');
+    user.type(getByPlaceholderText(/https:\/\/example\.com/i), 'Example text');
+    user.type(getByPlaceholderText(/введите текст/i), "sqeqww");
+    user.click(getByTestId(/specialization/i));
+    user.click(getByText(/Frontend/i))
+    user.click(getByTestId(/technologies/i));
+    user.click(getByText(/React/i))
+    user.click(getByText(/Добавить/i));
+
+    expect(container).toMatchSnapshot();
+  })
 })
+

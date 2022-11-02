@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik'
 import { SelectField } from '../forms/SelectField'
 import { generateUrl } from '../../services/generateUrl'
 import { useApi } from '../../hooks/useApi'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from 'react-query';
 import { useReferences } from '../../hooks/useReferences'
 
 const StyledButton = styled(Button)`

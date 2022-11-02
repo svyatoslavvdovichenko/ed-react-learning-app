@@ -1,4 +1,8 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { MemoryRouter, Route, Switch } from 'react-router-dom'
+import { Dashboard } from '../../pages/Dashboard'
 import { NewTask } from '../../pages/NewTask'
 
 jest.mock('react-router-dom', () => {
@@ -12,7 +16,7 @@ jest.mock('react-router-dom', () => {
         search: 'search',
         pathname: 'pathname',
       },
-    })
+    }),
   }
 })
 
@@ -45,6 +49,27 @@ jest.mock('../../hooks/useUser', () => ({
   }),
 }))
 
+const queryClient = new QueryClient()
+
+const renderWithRouter = (component: JSX.Element) => {
+  return {
+    ...render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter initialEntries={['/new-task']}>
+          <Switch>
+            <Route path="/new-task">
+              <NewTask />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </MemoryRouter>
+      </QueryClientProvider>,
+    ),
+  }
+}
+
 jest.mock('../../hooks/useAuth', () => ({
   useAuth: () => ({
     onLogout: () => {},
@@ -65,8 +90,37 @@ describe('NewTask', () => {
     })
   })
 
-  test('NewTask', () => {
-    const { container } = render(<NewTask />)
-    expect(container).toBeTruthy()
+  test('Placeholder works corrently', () => {
+    render(<NewTask />)
+    expect(screen.getByPlaceholderText(/Введите название/i)).toBeInTheDocument()
+  })
+
+  test('form works currently', () => {
+    const { container, getByTestId, getByText, getByPlaceholderText } = render(<NewTask />)
+    const user = userEvent
+
+    user.type(getByPlaceholderText(/Введите название/i), 'John')
+    user.type(
+      getByPlaceholderText(/https:\/\/example\.com/i),
+      'Example text',
+    )
+    user.type(getByPlaceholderText(/введите текст/i), 'sqeqww')
+
+    user.click(getByTestId('specialization'))
+    user.click(getByTestId(/technologies/i))
+
+    expect(container).toMatchSnapshot()
+  })
+
+  test('Click back button', () => {
+    renderWithRouter(<NewTask />)
+
+    userEvent.click(
+      screen.getByRole('button', {
+        name: /left назад/i,
+      }),
+    )
+
+    expect(screen.getByText(/фильтры/i)).toBeInTheDocument()
   })
 })
