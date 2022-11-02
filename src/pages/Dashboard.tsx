@@ -13,14 +13,6 @@ import { useActions } from '../hooks/useActions'
 
 export const Dashboard: FC = () => {
   const navigate = useHistory()
-  const { setReferences } = useActions()
-
-  const { data: dataTech } = useQueryRequest<ITechnology[]>('v1/technologies/')
-  const { data: dataSpec } = useQueryRequest<ISpecialization[]>(
-    'v1/specializations/',
-  )
-
-  setReferences({ technologies: dataTech!, specializations: dataSpec! })
 
   return (
     <Layout>

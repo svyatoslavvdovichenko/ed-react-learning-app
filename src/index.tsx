@@ -9,19 +9,20 @@ import { Provider } from 'react-redux'
 import 'antd/dist/antd.css'
 import './index.css'
 import { store } from './store'
+import { Reference } from "./hocs/Reference";
 
 const queryClient = new QueryClient()
 
 ReactDOM.render(
   <Router>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Provider store={store}>
-            <AuthChecker>
-              <AuthorizationApp />
-            </AuthChecker>
-        </Provider>
-      </BrowserRouter>
+      <Provider store={store}>
+        <AuthChecker>
+          <Reference>
+            <AuthorizationApp />
+          </Reference>
+        </AuthChecker>
+      </Provider>
     </QueryClientProvider>
   </Router>,
 
