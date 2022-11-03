@@ -4,11 +4,11 @@ import { AuthChecker } from './hocs/AuthChecker'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { Reference } from "./hocs/Reference";
+import { store } from './store'
 
 import 'antd/dist/antd.min.css'
 import './index.css'
-import { store } from './store'
-import { Reference } from "./hocs/Reference";
 
 const queryClient = new QueryClient()
 

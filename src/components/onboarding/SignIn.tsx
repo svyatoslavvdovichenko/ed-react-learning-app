@@ -13,10 +13,10 @@ import { Loader } from '../common/Loader'
 export const SignIn = () => {
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { setUser, setAuthHeader } = useActions()
-
-  const api = useApi()
+  
+  const api = useApi();
 
   const getUserProfile = () => {
     api
@@ -100,3 +100,5 @@ export const SignIn = () => {
     </Formik>
   )
 }
+
+

@@ -12,7 +12,7 @@ import styled, { css } from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useUser } from '../hooks/useUser'
-import { useTypedSelector } from '../hooks/useTypeSelector'
+import { useTypedSelector } from '../hooks/useTypedSelector'
 
 const { Title } = Typography
 

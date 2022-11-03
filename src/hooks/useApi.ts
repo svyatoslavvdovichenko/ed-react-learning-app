@@ -1,4 +1,4 @@
-import { useTypedSelector } from './useTypeSelector';
+import { useTypedSelector } from './useTypedSelector';
 
 export const useApi = () => {
  const api = useTypedSelector(state => state.apiReducer.apiInstance);

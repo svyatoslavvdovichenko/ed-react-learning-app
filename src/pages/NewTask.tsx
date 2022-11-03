@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout'
 import { TaskForm } from '../components/task/TaskForm'
 import { ERROR_NOTIFIFCATION_MESSAGE } from '../constants'
 import { useApi } from '../hooks/useApi'
-import { useTypedSelector } from '../hooks/useTypeSelector'
+import { useTypedSelector } from '../hooks/useTypedSelector'
 import {
   convertTechnologiesOptions,
   convertSpecializationOptions,

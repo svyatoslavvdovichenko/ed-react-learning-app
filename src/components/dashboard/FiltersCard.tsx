@@ -7,7 +7,7 @@ import { SelectField } from '../forms/SelectField'
 import { generateUrl } from '../../services/generateUrl'
 import { useApi } from '../../hooks/useApi'
 import { useQueryClient } from 'react-query'
-import { useTypedSelector } from '../../hooks/useTypeSelector'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const StyledButton = styled(Button)`
   height: 40px;

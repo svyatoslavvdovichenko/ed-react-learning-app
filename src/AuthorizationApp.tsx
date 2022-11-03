@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { Authorization } from './pages/Authorization'
 import { ForgetPassword } from './components/onboarding/ForgetPassword'
 import { UserApp } from './UserApp'
-import { useTypedSelector } from './hooks/useTypeSelector'
+import { useTypedSelector } from './hooks/useTypedSelector'
 
 export const AuthorizationApp: FC = () => {
   const { isAuthenticated } = useTypedSelector((state) => state.authReducer)
