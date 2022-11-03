@@ -15,9 +15,11 @@ export const Reference: FC<IReference> = ({ children }) => {
     fetchReferences()
   }, [])
 
-  if(technologies.length < 1) {
-    return <Loader fullScreen/>
-  }
-
-  return <>{children}</>
+  return (
+    <>
+      {technologies.length < 1 && (<Loader fullScreen/>)}
+      {technologies.length >= 1 && (<>{children}</>)}
+    </>
+  )
+  
 }

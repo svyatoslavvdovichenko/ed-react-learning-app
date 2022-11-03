@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Authorization } from './pages/Authorization'
 import { ForgetPassword } from './components/onboarding/ForgetPassword'
@@ -14,7 +14,7 @@ export const AuthorizationApp: FC = () => {
 
   return (
     <Routes>
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/auth" replace />} />
 
       <Route path="/auth" element={<Authorization />} />
 

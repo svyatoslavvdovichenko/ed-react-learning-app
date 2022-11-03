@@ -1,10 +1,10 @@
-import ReactDOM from "react-dom/client";
+import ReactDOM from 'react-dom/client'
 import { AuthorizationApp } from './AuthorizationApp'
 import { AuthChecker } from './hocs/AuthChecker'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { Reference } from "./hocs/Reference";
+import { Reference } from './hocs/Reference'
 import { store } from './store'
 
 import 'antd/dist/antd.min.css'
@@ -12,20 +12,16 @@ import './index.css'
 
 const queryClient = new QueryClient()
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <BrowserRouter>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <AuthChecker>
-          <Reference>
-            <AuthorizationApp />
-          </Reference>
+          <AuthorizationApp />
         </AuthChecker>
       </Provider>
     </QueryClientProvider>
-  </BrowserRouter>
+  </BrowserRouter>,
 )
