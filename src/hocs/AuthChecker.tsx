@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Loader } from '../components/common/Loader'
 import { useActions } from '../hooks/useActions'
 import { useApi } from '../hooks/useApi'
@@ -8,10 +8,14 @@ export type AuthCheckerState = {
   isLoading: boolean
 }
 
-export const AuthChecker: FC = ({ children }) => {
+interface IAuthChecker {
+  children: React.ReactNode;
+}
+
+export const AuthChecker: React.FC<IAuthChecker> = ({ children }) => {
   const [state, setState] = useState<AuthCheckerState>({ isLoading: true })
 
-  const navigate = useHistory()
+  const navigate = useNavigate()
 
   const { setUser, setAuthHeader } = useActions()
 
@@ -28,7 +32,7 @@ export const AuthChecker: FC = ({ children }) => {
       })
       .catch(() => {
         setState(() => ({ isLoading: false }))
-        navigate.push('/auth')
+        navigate('/auth');
       })
 
   useEffect(() => {

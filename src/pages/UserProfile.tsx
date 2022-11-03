@@ -5,9 +5,9 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
 import { StyledText } from '../components/common/StyledComponents'
-import { useUser } from '../hooks/useUser'
 import { TaskItem } from '../components/dashboard/TaskItem'
-import EditOutlined from '@ant-design/icons/lib/icons/EditOutlined'
+import { EditOutlined } from '@ant-design/icons'
+import { useTypedSelector } from '../hooks/useTypedSelector'
 
 const DoneTaskLine = styled.div`
   width: 35%;
@@ -36,21 +36,21 @@ const StyledRow = styled(Row)`
 `
 
 export const UserProfile: FC = () => {
-  const { user } = useUser()
+  const { user } = useTypedSelector(state => state.authReducer);
 
   return (
     <Layout>
       <StyledRow justify="center">
         <Col flex="0 1 970px">
           <Card>
-            <Row justify="space-between">
+            <Row gutter={24}>
               <Col span={8}>
                 <StyledText>
                   {user?.first_name} {user?.last_name}
                 </StyledText>
               </Col>
               
-              <Col span={6}>
+              <Col offset={8} span={4}>
                 <Button
                   type="primary"
                   ghost

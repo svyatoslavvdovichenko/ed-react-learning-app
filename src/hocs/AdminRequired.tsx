@@ -1,7 +1,11 @@
 import React, { FC } from 'react'
 import { useUser } from '../hooks/useUser'
 
-export const AdminRequired: FC = ({ children }) => {
+interface IAdminRequired {
+  children: React.ReactNode
+}
+
+export const AdminRequired: FC<IAdminRequired> = ({ children }) => {
   const { user } = useUser()
 
   return <>{user?.is_admin ? children : null}</>

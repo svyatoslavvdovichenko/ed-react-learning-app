@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd/lib/grid'
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Loader } from '../components/common/Loader'
 import { Layout } from '../components/Layout'
 import { TaskForm } from '../components/task/TaskForm'
@@ -20,7 +20,7 @@ import {
 
 export const EditTask = () => {
   const api = useApi()
-  const navigate = useHistory()
+  const navigate = useNavigate()
   const { taskId } = useParams<{ taskId: string }>()
 
   const { data: task, isLoading } = useQueryRequest<ITask>(
@@ -47,7 +47,7 @@ export const EditTask = () => {
       })
       .then(() => {
         sendSuccessNotification('Задание успешно обновлено')
-        navigate.push('/dashboard')
+        navigate('/dashboard')
       })
       .catch((err) => sendErrorNotification(ERROR_NOTIFIFCATION_MESSAGE))
   }

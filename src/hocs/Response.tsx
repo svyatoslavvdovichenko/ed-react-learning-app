@@ -3,7 +3,8 @@ import { useQuery } from 'react-query'
 import { Loader } from '../components/common/Loader'
 
 export interface ResponseProps {
-  key: string
+  key: string;
+  children: React.ReactNode
 }
 
 export const Response: FC<ResponseProps> = ({ key, children }) => {

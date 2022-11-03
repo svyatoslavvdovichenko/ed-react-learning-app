@@ -1,5 +1,5 @@
-import { Link, useHistory } from 'react-router-dom'
-import { Row, Col } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
+import { Row } from 'antd'
 import { Formik, Form } from 'formik'
 import { InputField } from '../forms/InputField'
 import { StyledButton } from '../common/StyledComponents'
@@ -13,7 +13,7 @@ import {
 import { ERROR_NOTIFIFCATION_MESSAGE } from '../../constants'
 
 export const SignUp = () => {
-  const navigate = useHistory()
+  const navigate = useNavigate()
 
   const api = useApi()
 
@@ -23,7 +23,7 @@ export const SignUp = () => {
       .then(({ data }) => {
         if (data) {
           sendSuccessNotification('Вы успешно зарегистрировались!')
-          navigate.push('/auth')
+          navigate('/auth')
         }
       })
       .catch(() => {

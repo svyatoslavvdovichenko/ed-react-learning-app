@@ -1,6 +1,6 @@
 import { Button, Card, Col, Divider, Popconfirm, Row, Tag } from 'antd'
 import { FC } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Breadcrumbs } from '../components/common/Breadcrumbs'
 import { Loader } from '../components/common/Loader'
 import { Layout } from '../components/Layout'
@@ -23,7 +23,7 @@ export const TaskProfile: FC = () => {
   const taskUrl = `v1/tasks/${taskId}/`
 
   const api = useApi()
-  const navigate = useHistory()
+  const navigate = useNavigate()
 
   const { data: task, isLoading } = useQueryRequest<ITask>(taskUrl)
 
@@ -32,7 +32,7 @@ export const TaskProfile: FC = () => {
       .delete(taskUrl)
       .then(() => {
         sendSuccessNotification('Задание успешно удалено')
-        navigate.push('/dashboard')
+        navigate('/dashboard')
       })
       .catch((err) => sendErrorNotification(ERROR_NOTIFIFCATION_MESSAGE))
   }
@@ -78,7 +78,7 @@ export const TaskProfile: FC = () => {
                   <Button
                     type="primary"
                     ghost
-                    onClick={() => navigate.push(`/task/${taskId}/edit`)}
+                    onClick={() => navigate(`/task/${taskId}/edit`)}
                   >
                     <EditOutlined />
                     Изменить
@@ -131,7 +131,7 @@ export const TaskProfile: FC = () => {
                 <Button
                   type="primary"
                   ghost
-                  onClick={() => navigate.push('/dashboard')}
+                  onClick={() => navigate('/dashboard')}
                   style={{ height: 40, marginRight: 20 }}
                 >
                   <LeftOutlined />

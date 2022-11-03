@@ -9,7 +9,7 @@ export const apiReducer = (state = initialState, action: apiActions): apiState =
   switch (action.type) {
     case apiActionTypes.SET_API: {
       let apiInstanceWithNewHeader = state.apiInstance;
-      
+           
       if (action.payload.token) {
         apiInstanceWithNewHeader.defaults.headers.common['Authorization'] = `Bearer ${action.payload.token}`
       } else {

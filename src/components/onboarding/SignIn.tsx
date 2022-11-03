@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Checkbox, Row } from 'antd'
 import { Formik, Form } from 'formik'
 import { SingInSchema } from '../../forms/validators'
@@ -13,7 +13,7 @@ import { Loader } from '../common/Loader'
 export const SignIn = () => {
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
 
-  const navigate = useHistory();
+  const navigate = useNavigate();
   const { setUser, setAuthHeader } = useActions()
   
   const api = useApi();
@@ -25,7 +25,7 @@ export const SignIn = () => {
         setUser({ user: data })
       })
       .catch(() => {
-        navigate.push('/auth')
+        navigate('/auth')
       })
   }
 
@@ -38,7 +38,7 @@ export const SignIn = () => {
           localStorage.setItem('authToken', data.token)
           setAuthHeader({ token: data.token })
           getUserProfile()
-          navigate.push('/dashboard')
+          navigate('/dashboard')
           setIsLoading(false);
         }
       })

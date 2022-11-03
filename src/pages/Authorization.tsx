@@ -1,4 +1,4 @@
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Row, Tabs, Col, Typography } from 'antd'
 import { Layout } from '../components/Layout'
 import { SignIn } from '../components/onboarding/SignIn'
@@ -13,7 +13,7 @@ export enum TabKeys {
 }
 
 export const Authorization = () => {
-  const history = useHistory()
+  const history = useNavigate()
   const location = useLocation()
 
   let searchParams = new URLSearchParams(location.search)
@@ -41,7 +41,7 @@ export const Authorization = () => {
 
           <Tabs
             onChange={(key) =>
-              history.push({
+              history({
                 pathname: location.pathname,
                 search: `?tab=${key}`,
               })

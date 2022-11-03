@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 interface PrivateRouteProps {
   privateElement: JSX.Element
@@ -7,5 +7,5 @@ interface PrivateRouteProps {
 
 export const PrivateRoute: FC<PrivateRouteProps> = ({ privateElement }) => {
   if (localStorage.getItem('authToken')) return privateElement
-  return <Redirect to="/auth" />
+  return <Navigate to="/auth" replace />
 }

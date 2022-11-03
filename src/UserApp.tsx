@@ -1,47 +1,40 @@
 import { FC } from 'react'
 import { Dashboard } from './pages/Dashboard'
-import { Redirect, Route, Switch } from 'react-router-dom'
 import { PrivateRoute } from './hocs/PrivateRoute'
 import { TaskProfile } from './pages/TaskProfile'
 import { NewTask } from './pages/NewTask'
 import { UserProfile } from './pages/UserProfile'
 import { EditTask } from './pages/EditTask'
 import { Reference } from './hocs/Reference'
-
-
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 export const UserApp: FC = () => (
   <Reference>
-    <Switch>
+    <Routes>
       <Route
         path="/dashboard"
-        exact
-        render={() => <PrivateRoute privateElement={<Dashboard />} />}
+        element={<PrivateRoute privateElement={<Dashboard />} />}
       />
       <Route
         path="/task/:taskId"
-        exact
-        render={() => <PrivateRoute privateElement={<TaskProfile />} />}
+        element={<PrivateRoute privateElement={<TaskProfile />} />}
       />
       <Route
         path="/task/:taskId/edit"
-        exact
-        render={() => <PrivateRoute privateElement={<EditTask />} />}
+        element={<PrivateRoute privateElement={<EditTask />} />}
       />
 
       <Route
         path="/new-task"
-        exact
-        render={() => <PrivateRoute privateElement={<NewTask />} />}
+        element={<PrivateRoute privateElement={<NewTask />} />}
       />
 
       <Route
         path="/profile"
-        exact
-        render={() => <PrivateRoute privateElement={<UserProfile />} />}
+        element={<PrivateRoute privateElement={<UserProfile />} />}
       />
 
-      <Redirect to="/dashboard" />
-    </Switch>
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
   </Reference>
 )

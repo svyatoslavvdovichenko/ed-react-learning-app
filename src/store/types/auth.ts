@@ -9,6 +9,7 @@ export enum AuthActionTypes {
   USER_LOGIN = 'USER_LOGIN',
   SET_USER = 'SET_USER',
   LOGOUT_USER = 'LOGOUT_USER',
+  AUTH_USER_SUCCESS = "AUTH_USER_SUCCESS",
 }
 
 export interface fetchUserSuccessAction {
@@ -16,6 +17,11 @@ export interface fetchUserSuccessAction {
   payload: {
     values: any
   }
+}
+
+export interface setAuthenticatedAction {
+  type: AuthActionTypes.AUTH_USER_SUCCESS
+  payload: boolean
 }
 
 export interface setUserSuccessAction {
@@ -33,3 +39,4 @@ export type AuthAction =
   | fetchUserSuccessAction
   | logOutAuthAction
   | setUserSuccessAction
+  | setAuthenticatedAction

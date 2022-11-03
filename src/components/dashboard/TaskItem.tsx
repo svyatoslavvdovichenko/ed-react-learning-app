@@ -2,21 +2,21 @@ import { FC } from 'react'
 import { Row, Col, Divider, Tag } from 'antd'
 import { StyledText } from '../common/StyledComponents'
 import { ITask } from '../../types'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface TaskItemProps {
   task: ITask
 }
 
 export const TaskItem: FC<TaskItemProps> = ({ task }) => {
-  const navigate = useHistory()
+  const navigate = useNavigate()
 
   return (
     <>
       <Row
         align="middle"
         justify="space-between"
-        onClick={() => navigate.push(`/task/${task.id}`)}
+        onClick={() => navigate(`/task/${task.id}`)}
         style={{ minHeight: 32, cursor: 'pointer', width: '100%' }}
       >
         <Col xs={17}>

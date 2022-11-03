@@ -1,21 +1,24 @@
-import { FC } from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { FC, useEffect } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Authorization } from './pages/Authorization'
 import { ForgetPassword } from './components/onboarding/ForgetPassword'
 import { UserApp } from './UserApp'
+import { useTypedSelector } from './hooks/useTypedSelector'
 
-export const AuthorizationApp: FC = () => (
-  <Switch>
-    <Redirect exact from="/" to="/dashboard" />
+export const AuthorizationApp: FC = () => {
+  const { isAuthenticated } = useTypedSelector((state) => state.authReducer)
 
-    <Route path="/auth" exact>
-      <Authorization />
-    </Route>
+  if (isAuthenticated) {
+    return <UserApp />
+  }
 
-    <Route path="/forget-password" exact>
-      <ForgetPassword />
-    </Route>
+  return (
+    <Routes>
+      <Route path="*" element={<Navigate to="/auth" replace />} />
 
-    <UserApp />
-  </Switch>
-)
+      <Route path="/auth" element={<Authorization />} />
+
+      <Route path="/forget-password" element={<ForgetPassword />} />
+    </Routes>
+  )
+}

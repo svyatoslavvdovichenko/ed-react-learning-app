@@ -11,7 +11,7 @@ import { SelectField } from '../forms/SelectField'
 import { TextareaField } from '../forms/TextareaField'
 import { CloseOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const CloseIcon = styled(CloseOutlined)`
@@ -39,7 +39,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 
   const { technologies } = useTypedSelector((state) => state.referenceReducer)
 
-  const navigate = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -154,7 +154,7 @@ export const TaskForm: FC<TaskFormProps> = ({
               <Button
                 type="primary"
                 ghost
-                onClick={() => navigate.push('/dashboard')}
+                onClick={() => navigate('/dashboard')}
                 style={{ height: 40, marginRight: 20 }}
               >
                 <LeftOutlined />
