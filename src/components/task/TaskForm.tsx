@@ -4,7 +4,6 @@ import { FieldArray, Form, Formik } from 'formik'
 import { FC, useState } from 'react'
 import { SPECIALIZATION_LIST } from '../../constants'
 import { TaskSchema } from '../../forms/validators'
-import { useReferences } from '../../hooks/useReferences'
 
 import { InputField } from '../forms/InputField'
 import { MultipleSelectField } from '../forms/MultipleSelectField'
@@ -13,6 +12,7 @@ import { TextareaField } from '../forms/TextareaField'
 import { CloseOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const CloseIcon = styled(CloseOutlined)`
   svg {
@@ -37,7 +37,7 @@ export const TaskForm: FC<TaskFormProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('')
 
-  const { technologies, specializations } = useReferences()
+  const { technologies } = useTypedSelector((state) => state.referenceReducer)
 
   const navigate = useHistory();
 

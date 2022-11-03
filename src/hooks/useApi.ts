@@ -1,8 +1,7 @@
-import { useContext } from 'react'
-import { ApiContext } from '../contexts/api'
+import { useTypedSelector } from './useTypedSelector';
 
 export const useApi = () => {
-  const api = useContext(ApiContext)
+ const api = useTypedSelector(state => state.apiReducer.apiInstance);
 
   return api
 }

@@ -1,13 +1,56 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { Checkbox, Row } from 'antd'
 import { Formik, Form } from 'formik'
 import { SingInSchema } from '../../forms/validators'
 import { InputField } from '../forms/InputField'
 import { StyledButton } from '../common/StyledComponents'
-import { useAuth } from '../../hooks/useAuth'
+import { useApi } from '../../hooks/useApi'
+import { sendErrorNotification } from '../../utils/systemNotification'
+import { useActions } from '../../hooks/useActions'
+import { Loader } from '../common/Loader'
 
 export const SignIn = () => {
-  const { onLogin } = useAuth()
+  const [ isLoading, setIsLoading ] = useState<boolean>(false);
+
+  const navigate = useHistory();
+  const { setUser, setAuthHeader } = useActions()
+  
+  const api = useApi();
+
+  const getUserProfile = () => {
+    api
+      .get('user/profile/')
+      .then(({ data }) => {
+        setUser({ user: data })
+      })
+      .catch(() => {
+        navigate.push('/auth')
+      })
+  }
+
+  const onLogin = (values: any) => {
+    setIsLoading(true);
+    api
+      .post('login/', { ...values })
+      .then(({ data }) => {
+        if (data) {
+          localStorage.setItem('authToken', data.token)
+          setAuthHeader({ token: data.token })
+          getUserProfile()
+          navigate.push('/dashboard')
+          setIsLoading(false);
+        }
+      })
+      .catch(() => {
+        setIsLoading(false);
+        sendErrorNotification('Пользователь с введенными данными не найден')
+      })
+  }
+
+  if (isLoading) {
+    return <Loader fullScreen />
+  }
 
   return (
     <Formik
@@ -57,3 +100,5 @@ export const SignIn = () => {
     </Formik>
   )
 }
+
+

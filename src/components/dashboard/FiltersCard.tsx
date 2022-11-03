@@ -7,7 +7,7 @@ import { SelectField } from '../forms/SelectField'
 import { generateUrl } from '../../services/generateUrl'
 import { useApi } from '../../hooks/useApi'
 import { useQueryClient } from 'react-query'
-import { useReferences } from '../../hooks/useReferences'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const StyledButton = styled(Button)`
   height: 40px;
@@ -20,7 +20,9 @@ const StyledCard = styled(Card)`
 `
 
 export const FiltersCard: FC = () => {
-  const { technologies, specializations } = useReferences()
+  const { technologies, specializations } = useTypedSelector(
+    (state) => state.referenceReducer,
+  )
 
   const queryClient = useQueryClient()
   const api = useApi()
@@ -34,7 +36,7 @@ export const FiltersCard: FC = () => {
       <Row justify="start" gutter={[0, 10]}>
         <Formik
           initialValues={{
-            specialization: "",
+            specialization: '',
             technologies: [],
           }}
           onSubmit={(values) => {

@@ -1,7 +1,5 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Dashboard } from '../../pages/Dashboard'
-import { QueryClient } from 'react-query'
 
 jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom')
@@ -34,23 +32,6 @@ jest.mock('../../hooks/useAuth', () => ({
   useAuth: () => ({
     onLogout: () => {},
     onLogin: () => {},
-  }),
-}))
-
-jest.mock('../../hooks/useReferences', () => ({
-  useReferences: () => ({
-    technologies: [
-      {
-        id: 123,
-        title: 'adaptive',
-      },
-    ],
-    specialization: [
-      {
-        id: 1,
-        title: 'frontend',
-      },
-    ],
   }),
 }))
 

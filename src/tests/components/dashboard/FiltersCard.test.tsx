@@ -1,23 +1,5 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { FiltersCard } from '../../../components/dashboard/FiltersCard'
-
-jest.mock('../../../hooks/useReferences', () => ({
-  useReferences: () => ({
-    technologies: [
-      {
-        id: 123,
-        title: 'adaptive',
-      },
-    ],
-    specialization: [
-      {
-        id: 1,
-        title: 'frontend',
-      },
-    ],
-  }),
-}))
 
 jest.mock('react-query', () => {
   const originalModule = jest.requireActual('react-query')

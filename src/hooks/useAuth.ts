@@ -1,8 +1,7 @@
-import { useContext } from 'react'
-import { AuthContext } from '../contexts/auth'
+import { useActions } from './useActions'
 
 export const useAuth = () => {
-  const { onLogout, onLogin } = useContext(AuthContext)
+  const { onLogout } = useActions()
 
-  return { onLogout, onLogin }
+  return { onLogout }
 }

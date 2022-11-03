@@ -9,7 +9,7 @@ import {
 } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useUser } from '../hooks/useUser'
 
@@ -39,6 +39,7 @@ export const Layout: FC<LayoutPropsType> = ({
   shouldBeCentered = false,
 }) => {
   const { onLogout } = useAuth()
+  const navigate = useHistory()
 
   const { user } = useUser()
 
@@ -71,15 +72,20 @@ export const Layout: FC<LayoutPropsType> = ({
                   <Menu.Item key="2">
                     <Link to="/settings">Настройки</Link>
                   </Menu.Item>
-                  <Menu.Item key="3" onClick={onLogout}>
+                  <Menu.Item
+                    key="3"
+                    onClick={() => {
+                      onLogout()
+                      navigate.push('/auth')
+                    }}
+                  >
                     Выйти
                   </Menu.Item>
                 </Menu>
               }
             >
-              <Button>
-                <UserOutlined />
-                {user.first_name}
+              <Button icon={<UserOutlined />}>
+                {user?.first_name}
               </Button>
             </Dropdown>
           )}
@@ -90,7 +96,9 @@ export const Layout: FC<LayoutPropsType> = ({
         {children}
       </StyledContent>
 
-      <Footer style={{ backgroundColor: '#F0F0F0' }}>Exceed Challenger 2022</Footer>
+      <Footer style={{ backgroundColor: '#F0F0F0' }}>
+        Exceed Challenger 2022
+      </Footer>
     </AntdLayout>
   )
 }
