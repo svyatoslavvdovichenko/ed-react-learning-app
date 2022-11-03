@@ -6,7 +6,7 @@ import { setReferences } from '../store/actions/referenceActions';
 
 const fetchReferenceFromApi = (api: AxiosInstance, url: string) =>  api.get(url).then(response => response.data);
 
-function* fetchToDosWorker() {
+function* fetchReferenceWorker() {
   const api: AxiosInstance = yield select(state => state.apiReducer.apiInstance); 
   const technologies: ITechnology[] = yield call(fetchReferenceFromApi, api, 'v1/technologies/');
   const specializations: ISpecialization[] = yield call(fetchReferenceFromApi, api, 'v1/specializations/');
@@ -18,5 +18,5 @@ function* fetchToDosWorker() {
 }
 
 export function* referenceWatcher() {
-  yield takeEvery(ReferencesActionTypes.FETCH_REFERENCES, fetchToDosWorker)
+  yield takeEvery(ReferencesActionTypes.FETCH_REFERENCES, fetchReferenceWorker)
 }
