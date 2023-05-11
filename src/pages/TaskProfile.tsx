@@ -37,6 +37,7 @@ export const TaskProfile: FC = () => {
       .catch((err) => sendErrorNotification(ERROR_NOTIFIFCATION_MESSAGE))
   }
 
+  
   return (
     <Layout>
       <Breadcrumbs
@@ -54,9 +55,9 @@ export const TaskProfile: FC = () => {
         <Row justify="center">
           <Col flex="0 1 970px">
             <Card
-              headStyle={{ padding: '16px 32px 0', maxWidth: '970px' }}
+              headStyle={{ padding: '16px 32px 0', maxWidth: '970px'}}
               bodyStyle={{ padding: '16px 32px 32px', maxWidth: '970px' }}
-              title={task.title}
+              title={task.title.length < 30 ? task.title : task.title.substr(0, 30) + "..."}
               extra={
                 <AdminRequired>
                   <Popconfirm
@@ -106,8 +107,10 @@ export const TaskProfile: FC = () => {
                   <StyledText>Описание задания</StyledText>
                 </Col>
 
-                <Col span={24} style={{ wordWrap: 'break-word' }}>
-                  <ReactMarkdown>{task.description}</ReactMarkdown>
+                <Col span={24} style={{ overflowWrap: "break-word" }}>
+                  <ReactMarkdown>
+                    {task.description}
+                  </ReactMarkdown>
                 </Col>
               </Row>
 
